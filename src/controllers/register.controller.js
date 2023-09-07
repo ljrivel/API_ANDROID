@@ -1,4 +1,4 @@
-import { getConnection } from '../ConnectionBD';
+import { getConnection } from '../ConnectionBD.js';
 
 export const getRegister = async (req, res) => {
   try {

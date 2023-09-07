@@ -1,7 +1,7 @@
 //Porpuse: Receive the request of register and send it to the controller
 import { Router } from 'express';
 
-import { getRegister } from '../controllers/register.controller';
+import { getRegister } from '../controllers/register.controller.js';
 
 const router = Router();
 
