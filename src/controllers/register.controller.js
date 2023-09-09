@@ -82,7 +82,7 @@ export const deleteRegister = async (req, res) => {
     const { id } = req.body;
 
     const connection = await getConnection();
-    const [rows] = await connection.execute('CALL EliminarMatricula(?)', [id]);
+    const [rows] = await connection.execute('CALL EliminarMatriculaEnCurso(?)', [id]);
 
     if (rows[0][0].mensaje === 'Matrícula eliminada correctamente.') {
       res.json({ mensaje: 'Matrícula eliminada correctamente.' });
