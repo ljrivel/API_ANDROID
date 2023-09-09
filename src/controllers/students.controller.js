@@ -88,7 +88,7 @@ export const deleteStudent = async (req, res) => {
 
 export const getStudentsbyCarnet = async (req, res) => {
   try {
-    const { carnet } = req.params;
+    const { carnet } = req.body;
     const connection = await getConnection();
     const [rows] = await connection.execute('CALL infoEstudiantePorCarnet(?)', [
       carnet,
