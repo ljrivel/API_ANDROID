@@ -66,7 +66,7 @@ export const deleteCourse = async (req, res) => {
   try {
     const { codigo } = req.body;
     const connection = await getConnection();
-    const [rows] = await connection.query('CALL EliminarCurso(?)', [codigo]);
+    const [rows] = await connection.query('CALL EliminarCursoPorCodigo(?)', [codigo]);
     if (rows[0][0].mensaje === 'Curso eliminado correctamente.') {
       res.json({ mensaje: 'Curso eliminado con éxito' });
     } else {
