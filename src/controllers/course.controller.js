@@ -84,7 +84,7 @@ export const getCoursesByCode = async (req, res) => {
   try {
     const { codigo } = req.body;
     const connection = await getConnection();
-    const [rows] = await connection.query('CALL infoCursoPorCodigo(?)', [
+    const [rows] = await connection.query('CALL GetCursoPorCodigo(?)', [
       codigo,
     ]);
     if (rows[0][0].mensaje === 'El curso no existe en la tabla curso.') {
