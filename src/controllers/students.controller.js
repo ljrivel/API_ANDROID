@@ -46,7 +46,7 @@ export const editStudent = async (req, res) => {
   try {
     const { nombre, apellido, email, carnet } = req.body;
     const connection = await getConnection();
-    const [rows] = await connection.execute('CALL EditarEstudiante(?,?,?,?)', [
+    const [rows] = await connection.execute('CALL ModificarEstudiante(?,?,?,?)', [
       nombre,
       apellido,
       email,
