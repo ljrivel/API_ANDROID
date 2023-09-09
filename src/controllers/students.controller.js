@@ -90,7 +90,7 @@ export const getStudentsbyCarnet = async (req, res) => {
   try {
     const { carnet } = req.body;
     const connection = await getConnection();
-    const [rows] = await connection.execute('CALL infoEstudiantePorCarnet(?)', [
+    const [rows] = await connection.execute('CALL GetEstudiantePorCarnet(?)', [
       carnet,
     ]);
     if (
