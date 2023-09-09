@@ -21,23 +21,23 @@ export const getRegister = async (req, res) => {
 
 export const addRegister = async (req, res) => {
   try {
-    const { carnet, codigo, fecha } = req.body;
+    const { carnet, codigo } = req.body;
     const connection = await getConnection();
     const [rows] = await connection.execute(
-      'CALL InsertarCursoMatriculado(?,?,?)',
-      [carnet, codigo, fecha]
+      'CALL InsertarMatriculaConCodigoCarnet(?,?)',
+      [codigo,carnet]
     );
 
     if (
-      rows[0][0].mensaje === 'El estudiante ya está matriculado en el curso.'
+      rows[0][0].mensaje === 'El estudiante ya está matriculado en este curso.'
     ) {
-      return res.status(404).json({
+      return res.status(200).json({
         error: 'El estudiante ya está matriculado en el curso.',
       });
     } else {
       if (
         rows[0][0].mensaje ===
-        'El estudiante y/o el curso no existen en la base de datos.'
+        'No se encontró un curso con el código o un estudiante con el carnet proporcionado.'
       ) {
         return res.status(404).json({
           error: 'El estudiante y/o el curso no existen en la base de datos.',
