@@ -87,7 +87,7 @@ export const getCoursesByCode = async (req, res) => {
     const [rows] = await connection.query('CALL GetCursoPorCodigo(?)', [
       codigo,
     ]);
-    if (rows[0][0].mensaje === 'El curso no existe en la tabla curso.') {
+    if (rows[0][0].mensaje === 'No se encontró un curso con el código proporcionado.') {
       return res.status(404).json({ error: 'El curso no existe.' });
     } else {
       res.json(rows[0]);
